@@ -7,14 +7,16 @@ export default function Home() {
   const [listing, setListing] = useState([]);
   const [productName, setProductName] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [location, setLocation] = useState("");
   const handleLogInBtn = () => {
     setLoggedIn(true);
   };
   const handleAddListing = () => {
-    if(productName.trim() == '') return
+    if (productName.trim() == "") return;
     const temp_list = {
       Product: productName,
       Quantity: quantity,
+      Location: location
     };
     setListing([...listing, temp_list]);
   };
@@ -25,7 +27,7 @@ export default function Home() {
       for (let i = 0; i < index; i++) {
         temp_list.push(listing[i]);
       }
-      for (let i = index+1; i < listing.length; i++) {
+      for (let i = index + 1; i < listing.length; i++) {
         temp_list.push(listing[i]);
       }
       setListing(temp_list);
@@ -116,6 +118,9 @@ export default function Home() {
                   <p className="mt-1 truncate text-sm text-gray-500">
                     Waste Quantity: {list["Quantity"]} kg
                   </p>
+                  <p className="truncate text-sm text-gray-500 mt-2">
+                    Location: {list["Location"]}
+                  </p>
                 </div>
                 <button
                   type="button"
@@ -163,6 +168,25 @@ export default function Home() {
                   placeholder="1/2/3 kgs"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
+                />
+              </div>
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="mt-5 block text-sm font-medium leading-6 text-gray-900"
+              >
+                Location
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="1/2/3 kgs"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
                 />
               </div>
             </div>
