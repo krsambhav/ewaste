@@ -321,26 +321,33 @@ export default function Home() {
             on this project and gained a lot of knowledge doing so. We would
             like to take this opportunity to express our gratitude to Dr. B G
             Prasad, Principal of DSCE, for permitting us to utilize all the
-            necessary facilities of the institution. 
-            <br /><br />
-            
-            We also thank our
-            respected, Head of Computer Science & Engineering (Cyber Security),
-            DSCE, Bangalore, Dr. Mohammed Tajuddin, for his support and
-            encouragement throughout the process. 
-            <br /><br />
-            We are immensely grateful to
-            our respected and learned guide, Asst Prof. Padmavathi, Designation,
-            Dept. of Computer Science & Engineering (Cyber Security), DSCE for
-            his/her valuable help and guidance. We are indebted to them for
-            their invaluable guidance throughout the process and their useful
-            inputs at all stages of the process.
+            necessary facilities of the institution.
+            <br />
+            <br />
+            We also thank our respected, Head of Computer Science & Engineering
+            (Cyber Security), DSCE, Bangalore, Dr. Mohammed Tajuddin, for his
+            support and encouragement throughout the process.
+            <br />
+            <br />
+            We are immensely grateful to our respected and learned guide, Asst
+            Prof. Padmavathi, Designation, Dept. of Computer Science &
+            Engineering (Cyber Security), DSCE for his/her valuable help and
+            guidance. We are indebted to them for their invaluable guidance
+            throughout the process and their useful inputs at all stages of the
+            process.
           </p>
-          <br /><br /><br />
-          <p>Team Members:</p>
-          <p>BAIDURYA PHUKAN - ( 1DS22CY011 )</p>
-          <p>MEGHANA DESHMUKH - ( 1DS22CY025 )</p>
-          <p>MOUNIKA T - ( 1DS22CY029 )</p>
+          <br />
+          <br />
+          <br />
+          <div className="w-[80vw] flex flex-row justify-end">
+            <div className="">
+            <p>Submitted By:</p>
+            <p>BAIDURYA PHUKAN - ( 1DS22CY011 )</p>
+            <p>MEGHANA DESHMUKH - ( 1DS22CY025 )</p>
+            <p>MOUNIKA T - ( 1DS22CY029 )</p>
+            <p>PARVATI WALADUNKI - ( 1DS22CY032 )</p>
+            </div>
+          </div>
         </>
       )}
     </main>
