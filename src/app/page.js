@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import img1 from '../assets/pic1.png';
 
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -9,6 +10,7 @@ export default function Home() {
   const [seller, setSeller] = useState("");
   const [contact, setContact] = useState("");
   const [userType, setUserType] = useState("Seller");
+  const [home, setHome] = useState(true);
   const [buyerListing, setBuyerListing] = useState([
     {
       Product: "Circuit boards",
@@ -29,6 +31,12 @@ export default function Home() {
   const handleLogInBtn = () => {
     setLoggedIn(true);
   };
+  const handleGoToLogin = () => {
+    setHome(false)
+  }
+  const handleLastPage = () => {
+    return '12'
+  }
   const handleAddListing = () => {
     if (productName.trim() == "") return;
     const temp_list = {
@@ -53,10 +61,46 @@ export default function Home() {
   };
   return (
     <main className="w-screen min-h-screen flex flex-col items-center mt-10">
-      {loggedIn == false && (
-        <div className="login-box w-[400px] h-[400px]">
+      {home == true && (
+        <div className="w-[90vw]">
           <div className="title text-3xl mb-[100px]">
-            E Waste Management System
+            Electronic Waste Management
+          </div>
+          <p className="text-2xl">
+            E-waste is any electrical or electronic equipment that’s been
+            discarded. This includes working and broken items that are thrown in
+            the garbage or donated to a charity reseller like Goodwill. Often,
+            if the item goes unsold in the store, it will be thrown away.
+            E-waste is particularly dangerous due to toxic chemicals that
+            naturally leach from the metals inside when buried. The definition
+            of e-waste is likely to keep expanding. In an era of rapid
+            technological advancement, more and more highly sophisticated
+            electronic goods are being invented and manufactured. Just think of
+            the concept of the “smart home.” It’s easy to recognize how many
+            electronic devices can now do everything from offer security to
+            turning lights on and off, to having fresh coffee ready before we
+            wake up. Unfortunately, a skyrocketing amount of e-waste is being
+            written off by owners as junk. There’s no more significant example
+            of that than computers, laptops, and smartphones. New models arrive
+            even as the current one appears to be working just fine. Despite
+            that, the latest version always provides additional features that
+            make it seem too enticing to resist.
+          </p>
+          <Image className="mt-5" src={img1} alt="PIC1" />
+          <p className="ml-10">Trend in Growth of E-Waste in India</p>
+          <button
+            type="button"
+            onClick={handleGoToLogin}
+            className="rounded bg-indigo-600 px-2 py-1 mt-10 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Go To Login
+          </button>
+        </div>
+      )}
+      {loggedIn == false && home == false && (
+        <div className="login-box  h-[400px]">
+          <div className="title text-3xl mb-[100px]">
+            Electronic Waste Management
           </div>
           <div>
             <label
@@ -101,7 +145,7 @@ export default function Home() {
             </label>
             <select
               onChange={(e) => {
-                setUserType(e.target.value)
+                setUserType(e.target.value);
               }}
               value={userType}
               id="category"
@@ -176,73 +220,85 @@ export default function Home() {
                 </div>
               ))}
           </div>
-          <p className="mt-10">Price and quantity should be directly negotiated between the seller and the buyer.</p>
-          {userType === 'Seller' && <div className="add-listing-box mt-20">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Name
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Mobiles/Laptops/etc"
-                  value={productName}
-                  onChange={(e) => setProductName(e.target.value)}
-                />
+          <p className="mt-10 text-2xl font-bold">
+            Price and quantity should be directly negotiated between the seller
+            and the buyer.
+          </p>
+          {userType === "Seller" && (
+            <div className="add-listing-box mt-20">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Name
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    placeholder="Mobiles/Laptops/etc"
+                    value={productName}
+                    onChange={(e) => setProductName(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="mt-5 block text-sm font-medium leading-6 text-gray-900"
-              >
-                Seller
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Seller Name"
-                  value={seller}
-                  onChange={(e) => setSeller(e.target.value)}
-                />
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mt-5 block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Seller
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    placeholder="Seller Name"
+                    value={seller}
+                    onChange={(e) => setSeller(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="mt-5 block text-sm font-medium leading-6 text-gray-900"
-              >
-                Contact
-              </label>
-              <div className="mt-2">
-                <input
-                  type="text"
-                  name="email"
-                  id="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Contact"
-                  value={contact}
-                  onChange={(e) => setContact(e.target.value)}
-                />
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mt-5 block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Contact
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    placeholder="Contact"
+                    value={contact}
+                    onChange={(e) => setContact(e.target.value)}
+                  />
+                </div>
               </div>
+              <button
+                type="button"
+                onClick={handleAddListing}
+                className="mt-5 rounded bg-indigo-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Add Listing
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={handleAddListing}
-              className="mt-5 rounded bg-indigo-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Add Listing
-            </button>
-          </div>}
+          )}
+          <button
+            type="button"
+            onClick={handleLastPage}
+            className="rounded bg-indigo-600 px-2 py-1 mt-10 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Next
+          </button>
         </>
       )}
     </main>
