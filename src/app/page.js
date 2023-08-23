@@ -6,8 +6,26 @@ export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [listing, setListing] = useState([]);
   const [productName, setProductName] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [location, setLocation] = useState("");
+  const [seller, setSeller] = useState("");
+  const [contact, setContact] = useState("");
+  const [userType, setUserType] = useState("");
+  const [buyerListing, setBuyerListing] = useState([
+    {
+      Product: "Circuit boards",
+      Seller: "MV Enterprise",
+      Contact: "+917822671187",
+    },
+    {
+      Product: "Plastic Castings",
+      Seller: "J.M Electronics",
+      Contact: "+919022783311",
+    },
+    {
+      Product: "Rechargeable Batteries",
+      Seller: "Radiant Stationary",
+      Contact: "+918867200921",
+    },
+  ]);
   const handleLogInBtn = () => {
     setLoggedIn(true);
   };
@@ -15,8 +33,8 @@ export default function Home() {
     if (productName.trim() == "") return;
     const temp_list = {
       Product: productName,
-      Quantity: quantity,
-      Location: location
+      Seller: seller,
+      Contact: contact,
     };
     setListing([...listing, temp_list]);
   };
@@ -82,6 +100,10 @@ export default function Home() {
               Category
             </label>
             <select
+              onChange={(e) => {
+                setUserType(e.target.value)
+              }}
+              value={userType}
               id="category"
               name="category"
               className="mt-2 block w-full rounded-md border-0 px-3 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -104,34 +126,57 @@ export default function Home() {
         <>
           <div className="title text-3xl">Seller Listing</div>
           <div className="listing-container mt-10">
-            {listing.map((list, index) => (
-              <div
-                key={index}
-                className="flex w-full items-center justify-between space-x-6 p-6 shadow-lg"
-              >
-                <div className="flex-1 truncate">
-                  <div className="flex items-center space-x-3">
-                    <h3 className="truncate text-sm font-medium text-gray-900">
-                      Waste Name: {list["Product"]}
-                    </h3>
-                  </div>
-                  <p className="mt-1 truncate text-sm text-gray-500">
-                    Waste Quantity: {list["Quantity"]} kg
-                  </p>
-                  <p className="truncate text-sm text-gray-500 mt-2">
-                    Location: {list["Location"]}
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => handleListingDelete(index)}
-                  className="mt-20 rounded bg-red-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+            {userType === "Buyer" &&
+              buyerListing.map((list, index) => (
+                <div
+                  key={index}
+                  className="flex w-full items-center justify-between space-x-6 p-6 shadow-lg"
                 >
-                  Delete Listing
-                </button>
-              </div>
-            ))}
+                  <div className="flex-1 truncate">
+                    <div className="flex items-center space-x-3">
+                      <h3 className="truncate text-sm font-medium text-gray-900">
+                        Product: {list["Product"]}
+                      </h3>
+                    </div>
+                    <p className="mt-1 truncate text-sm text-gray-500">
+                      Seller: {list["Seller"]}
+                    </p>
+                    <p className="truncate text-sm text-gray-500 mt-2">
+                      Contact: {list["Contact"]}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            {userType === "Seller" &&
+              listing.map((list, index) => (
+                <div
+                  key={index}
+                  className="flex w-full items-center justify-between space-x-6 p-6 shadow-lg"
+                >
+                  <div className="flex-1 truncate">
+                    <div className="flex items-center space-x-3">
+                      <h3 className="truncate text-sm font-medium text-gray-900">
+                        Product: {list["Product"]}
+                      </h3>
+                    </div>
+                    <p className="mt-1 truncate text-sm text-gray-500">
+                      Seller: {list["Seller"]}
+                    </p>
+                    <p className="truncate text-sm text-gray-500 mt-2">
+                      Contact: {list["Contact"]}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleListingDelete(index)}
+                    className="mt-20 rounded bg-red-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+                  >
+                    Delete Listing
+                  </button>
+                </div>
+              ))}
           </div>
+          <p className="mt-10">Price and quantity should be directly negotiated between the seller and the buyer.</p>
           <div className="add-listing-box mt-20">
             <div>
               <label
@@ -157,17 +202,17 @@ export default function Home() {
                 htmlFor="email"
                 className="mt-5 block text-sm font-medium leading-6 text-gray-900"
               >
-                Quantity
+                Seller
               </label>
               <div className="mt-2">
                 <input
-                  type="number"
+                  type="text"
                   name="email"
                   id="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   placeholder="1/2/3 kgs"
-                  value={quantity}
-                  onChange={(e) => setQuantity(e.target.value)}
+                  value={seller}
+                  onChange={(e) => setSeller(e.target.value)}
                 />
               </div>
             </div>
@@ -184,9 +229,9 @@ export default function Home() {
                   name="email"
                   id="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="Location"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="Contact"
+                  value={contact}
+                  onChange={(e) => setContact(e.target.value)}
                 />
               </div>
             </div>
