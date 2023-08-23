@@ -8,7 +8,7 @@ export default function Home() {
   const [productName, setProductName] = useState("");
   const [seller, setSeller] = useState("");
   const [contact, setContact] = useState("");
-  const [userType, setUserType] = useState("");
+  const [userType, setUserType] = useState("Seller");
   const [buyerListing, setBuyerListing] = useState([
     {
       Product: "Circuit boards",
@@ -177,7 +177,7 @@ export default function Home() {
               ))}
           </div>
           <p className="mt-10">Price and quantity should be directly negotiated between the seller and the buyer.</p>
-          <div className="add-listing-box mt-20">
+          {userType === 'Seller' && <div className="add-listing-box mt-20">
             <div>
               <label
                 htmlFor="email"
@@ -242,7 +242,7 @@ export default function Home() {
             >
               Add Listing
             </button>
-          </div>
+          </div>}
         </>
       )}
     </main>
