@@ -178,7 +178,7 @@ export default function Home() {
       )}
       {loggedIn == true && lastPage == false && (
         <>
-          <div className="title text-3xl">Seller Listing</div>
+          <div className="title text-3xl">{userType === 'Buyer' ? 'Buyer Listing' : 'Seller Listing'}</div>
           <div className="listing-container mt-10">
             {userType === "Buyer" &&
               buyerListing.map((list, index) => (
