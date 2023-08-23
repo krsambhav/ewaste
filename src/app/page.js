@@ -321,10 +321,15 @@ export default function Home() {
             on this project and gained a lot of knowledge doing so. We would
             like to take this opportunity to express our gratitude to Dr. B G
             Prasad, Principal of DSCE, for permitting us to utilize all the
-            necessary facilities of the institution. We also thank our
+            necessary facilities of the institution. 
+            <br /><br />
+            
+            We also thank our
             respected, Head of Computer Science & Engineering (Cyber Security),
             DSCE, Bangalore, Dr. Mohammed Tajuddin, for his support and
-            encouragement throughout the process. We are immensely grateful to
+            encouragement throughout the process. 
+            <br /><br />
+            We are immensely grateful to
             our respected and learned guide, Asst Prof. Padmavathi, Designation,
             Dept. of Computer Science & Engineering (Cyber Security), DSCE for
             his/her valuable help and guidance. We are indebted to them for
