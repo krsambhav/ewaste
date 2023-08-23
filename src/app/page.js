@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import img1 from '../assets/pic1.png';
-import img2 from '../assets/pic2.png';
-import img3 from '../assets/clg.png';
+import img1 from "../assets/pic1.png";
+import img2 from "../assets/pic2.png";
+import img3 from "../assets/clg.png";
 
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -35,11 +35,11 @@ export default function Home() {
     setLoggedIn(true);
   };
   const handleGoToLogin = () => {
-    setHome(false)
-  }
+    setHome(false);
+  };
   const handleLastPage = () => {
-    setLastPage(true)
-  }
+    setLastPage(true);
+  };
   const handleAddListing = () => {
     if (productName.trim() == "") return;
     const temp_list = {
@@ -89,10 +89,15 @@ export default function Home() {
             that, the latest version always provides additional features that
             make it seem too enticing to resist.
           </p>
-          <div className="flex flex-row"><Image className="mt-5" src={img1} alt="PIC1" />
-          <Image className="mt-5" src={img2} alt="PIC1" /></div>
+          <div className="flex flex-row">
+            <Image className="mt-5" src={img1} alt="PIC1" />
+            <Image className="mt-5" src={img2} alt="PIC1" />
+          </div>
           <p className="ml-10">Trend in Growth of E-Waste in India</p>
-          <p className="text-2xl mt-20">Please proceed to our marketplace in the nextpage where people can trade their E-Waste materials</p>
+          <p className="text-2xl mt-20">
+            Please proceed to our marketplace in the nextpage where people can
+            trade their E-Waste materials
+          </p>
           <button
             type="button"
             onClick={handleGoToLogin}
@@ -196,7 +201,8 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-            {userType === "Seller" && lastPage === false &&
+            {userType === "Seller" &&
+              lastPage === false &&
               listing.map((list, index) => (
                 <div
                   key={index}
@@ -306,9 +312,27 @@ export default function Home() {
           </button>
         </>
       )}
-      {lastPage == true && <>
-        <Image className="mt-5" src={img3} alt="PIC1" />
-      </>}
+      {lastPage == true && (
+        <>
+          <Image className="mt-5" src={img3} alt="PIC1" />
+          <p className="w-[75vw] mt-10">
+            We are pleased to have successfully completed the Mini project
+            “E-WASTE MANAGEMENT”. We thoroughly enjoyed the process of working
+            on this project and gained a lot of knowledge doing so. We would
+            like to take this opportunity to express our gratitude to Dr. B G
+            Prasad, Principal of DSCE, for permitting us to utilize all the
+            necessary facilities of the institution. We also thank our
+            respected, Head of Computer Science & Engineering (Cyber Security),
+            DSCE, Bangalore, Dr. Mohammed Tajuddin, for his support and
+            encouragement throughout the process. We are immensely grateful to
+            our respected and learned guide, Asst Prof. Padmavathi, Designation,
+            Dept. of Computer Science & Engineering (Cyber Security), DSCE for
+            his/her valuable help and guidance. We are indebted to them for
+            their invaluable guidance throughout the process and their useful
+            inputs at all stages of the process.
+          </p>
+        </>
+      )}
     </main>
   );
 }
