@@ -336,6 +336,11 @@ export default function Home() {
             their invaluable guidance throughout the process and their useful
             inputs at all stages of the process.
           </p>
+          <br /><br /><br />
+          <p>Team Members:</p>
+          <p>BAIDURYA PHUKAN - ( 1DS22CY011 )</p>
+          <p>MEGHANA DESHMUKH - ( 1DS22CY025 )</p>
+          <p>MOUNIKA T - ( 1DS22CY029 )</p>
         </>
       )}
     </main>
