@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import img1 from '../assets/pic1.png';
+import img2 from '../assets/pic2.png';
+import img3 from '../assets/clg.png';
 
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -11,6 +13,7 @@ export default function Home() {
   const [contact, setContact] = useState("");
   const [userType, setUserType] = useState("Seller");
   const [home, setHome] = useState(true);
+  const [lastPage, setLastPage] = useState(false);
   const [buyerListing, setBuyerListing] = useState([
     {
       Product: "Circuit boards",
@@ -35,7 +38,7 @@ export default function Home() {
     setHome(false)
   }
   const handleLastPage = () => {
-    return '12'
+    setLastPage(true)
   }
   const handleAddListing = () => {
     if (productName.trim() == "") return;
@@ -86,8 +89,10 @@ export default function Home() {
             that, the latest version always provides additional features that
             make it seem too enticing to resist.
           </p>
-          <Image className="mt-5" src={img1} alt="PIC1" />
+          <div className="flex flex-row"><Image className="mt-5" src={img1} alt="PIC1" />
+          <Image className="mt-5" src={img2} alt="PIC1" /></div>
           <p className="ml-10">Trend in Growth of E-Waste in India</p>
+          <p className="text-2xl mt-20">Please proceed to our marketplace in the nextpage where people can trade their E-Waste materials</p>
           <button
             type="button"
             onClick={handleGoToLogin}
@@ -97,7 +102,7 @@ export default function Home() {
           </button>
         </div>
       )}
-      {loggedIn == false && home == false && (
+      {loggedIn == false && home == false && lastPage == false && (
         <div className="login-box  h-[400px]">
           <div className="title text-3xl mb-[100px]">
             Electronic Waste Management
@@ -166,7 +171,7 @@ export default function Home() {
           </button>
         </div>
       )}
-      {loggedIn == true && (
+      {loggedIn == true && lastPage == false && (
         <>
           <div className="title text-3xl">Seller Listing</div>
           <div className="listing-container mt-10">
@@ -191,7 +196,7 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-            {userType === "Seller" &&
+            {userType === "Seller" && lastPage === false &&
               listing.map((list, index) => (
                 <div
                   key={index}
@@ -224,7 +229,7 @@ export default function Home() {
             Price and quantity should be directly negotiated between the seller
             and the buyer.
           </p>
-          {userType === "Seller" && (
+          {userType === "Seller" && lastPage === false && (
             <div className="add-listing-box mt-20">
               <div>
                 <label
@@ -297,10 +302,13 @@ export default function Home() {
             onClick={handleLastPage}
             className="rounded bg-indigo-600 px-2 py-1 mt-10 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Next
+            End
           </button>
         </>
       )}
+      {lastPage == true && <>
+        <Image className="mt-5" src={img3} alt="PIC1" />
+      </>}
     </main>
   );
 }
