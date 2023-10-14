@@ -325,7 +325,7 @@ export default function Home() {
       {lastPage == true && (
         <>
           <Image className="mt-5" src={img3} alt="PIC1" />
-          <p className="w-[75vw] mt-10">
+          <p className="w-[75vw] mt-10 text-justify">
             We are pleased to have successfully completed the Mini project
             “E-WASTE MANAGEMENT”. We thoroughly enjoyed the process of working
             on this project and gained a lot of knowledge doing so. We would
