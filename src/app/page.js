@@ -35,7 +35,9 @@ export default function Home() {
   ]);
   const handleLogInBtn = () => {
     if (userEmail == '' || userPassword == '') return
+    if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i.test(userEmail)) 
     setLoggedIn(true);
+    else return;
   };
   const handleGoToLogin = () => {
     setHome(false);
@@ -81,7 +83,7 @@ export default function Home() {
             Go To Login
           </button>
           </div>
-          <p className="text-2xl">
+          <p className="text-2xl text-justify">
             E-waste is any electrical or electronic equipment that’s been
             discarded. This includes working and broken items that are thrown in
             the garbage or donated to a charity reseller like Goodwill. Often,
@@ -106,7 +108,7 @@ export default function Home() {
             <Image className="mt-5" src={img2} alt="PIC1" />
           </div>
           <p className="ml-10">Trend in Growth of E-Waste in India</p>
-          <p className="text-2xl mt-20">
+          <p className="text-2xl mt-20 text-justify">
             Please proceed to our marketplace in the nextpage where people can
             trade their E-Waste materials
           </p>
